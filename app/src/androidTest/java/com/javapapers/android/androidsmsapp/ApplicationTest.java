@@ -13,6 +13,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @LargeTest
 public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -30,14 +31,23 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.btnInbox)).perform(click());
     }
 
-    public void testSendSms() throws InterruptedException {
+    public void testSendAndReceiveSms() throws InterruptedException {
         onView(withId(R.id.btnCompose)).check(matches(isDisplayed()));
         onView(withId(R.id.btnCompose)).perform(click());
 
-        onView(withId(R.id.editTextPhoneNo)).perform(typeText("5198649306"));
+        onView(withId(R.id.editTextPhoneNo)).perform(typeText("5184117032"));
         onView(withId(R.id.editTextSMS)).perform(typeText("mensagem ui loco"));
 
         onView(withId(R.id.btnSendSMS)).perform(click());
+
+        Thread.sleep(500000);
+
+        onView(withId(R.id.btnInbox)).check(matches(isDisplayed()));
+        onView(withId(R.id.btnInbox)).perform(click());
+
+
+
+        onView(withId(R.id.textView)).check(matches(withText("dieine")));
     }
 
 }
