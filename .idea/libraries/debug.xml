@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="debug">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/hamcrest-core-1.1-c51118756c064cc29aace3029d60cf3c03991ea0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/javax.inject-1-a1f8c71f5cc189cb003da3f4cf16d7d5f4f69df5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/javax.annotation-api-1.2-aead2d88c3080ea572a811c1d3af2b56718c75c9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/classes-b45ae6a49bda3f1171d2dd924ead15c42475b4b7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/javawriter-2.1.1-101f04689a9893c52aec44185b7e419787efef30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/spoon-client-1.1.9-498369a5838a1b33b85b037c7b8ba27c84b82af7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/jsr305-2.0.1-4748b837dd9d04e604bb60cd5e30de67a5589a44.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/hamcrest-library-1.1-5e0d925f161ac91a020cd0ef817c7306595a5809.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/classes-6b40762e9acc5500ae03169e9b9a0af6651b332a.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/classes-e2e38460ecbafda33a065a93cce30715b2a62733.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/hamcrest-integration-1.1-b6697fe3cd8e017a96999b1f217d8850ebdb6fe8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/classes-590581a32155979ef9b4ceb0ddc6bd830e6b4889.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/pre-dexed/androidTest/debug/junit-dep-4.10-34bb73f4e4dd49f5673927213864015858bf3c6c.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
