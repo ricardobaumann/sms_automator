@@ -24,8 +24,7 @@ public class OiValescaTest extends SmsTest {
 
     @Override
     protected String getAlreadySignedMessage() {
-        return "VALESCA: Voce ja e assinante e recebera diariamente dicas" +
-                "sobre o mundo pop! Duvidas envie AJUDA";
+        return "Valesca: Voce ja eh assinante";
     }
 
     @Override
