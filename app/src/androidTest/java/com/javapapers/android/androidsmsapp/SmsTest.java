@@ -27,10 +27,15 @@ public class SmsTest extends ActivityInstrumentationTestCase2<MainActivity>{
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        getActivity();
         //TODO: clean inbox
     }
 
-    public void sendMessage(String msisdn,String message) {
+    protected Integer getDefaultDelay() {
+        return 1;
+    }
+
+    public void sendMessageAndDelay(String msisdn, String message) {
         onView(withId(R.id.btnCompose)).check(matches(isDisplayed()));
         onView(withId(R.id.btnCompose)).perform(click());
 
@@ -38,6 +43,8 @@ public class SmsTest extends ActivityInstrumentationTestCase2<MainActivity>{
         onView(withId(R.id.editTextSMS)).perform(typeText(message));
 
         onView(withId(R.id.btnSendSMS)).perform(click());
+
+        delay(getDefaultDelay());
     }
 
     public void verifyMessage(String from,String message) {
