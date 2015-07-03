@@ -36,10 +36,33 @@ public class OiGloriaKalilTest extends SmsTest {
 
     private static final String KEYWORD_OPTIN = "ESTILO";
 
-    public void test() {
-        sendMessage(LA,KEYWORD_OPTIN);
+    private static final String KEYWORD_OPTOUT = "SAIR";
+
+    public void testOptinOptout() {
+        sendMessage(LA, KEYWORD_OPTIN);
+
         delay(3);
-        verifyMessage(LA,"Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros dias sao GRATIS!");
+
+        verifyMessage(LA, "Estilo com Gloria Kalil assinado! (RS3,99 por semana)." +
+                " Voce recebera dicas diarias para voce ficar por dentro da moda. " +
+                "Para cancelar envie SAIR para 66006");
+
+        delay(3);
+
+        verifyMessage(LA, "Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros " +
+                "dias sao GRATIS! Não");
+
+        delay(3);
+
+        sendMessage(LA, KEYWORD_OPTOUT);
+
+        delay(3);
+
+        verifyMessage(LA,"GLORIA: Seu cancelamento foi efetuado com sucesso. Voce pode " +
+                "assinar novamente a qualquer momento enviando ESTILO para " +
+                "66006");
+
+
     }
 
 }
