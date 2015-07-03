@@ -21,6 +21,11 @@ public class OiGloriaKalilTest extends SmsTest {
     }
 
     @Override
+    protected String getFirstContent() {
+        return null;
+    }
+
+    @Override
     protected String getSignoutMessage() {
         return "GLORIA: Seu cancelamento foi efetuado com sucesso. Voce pode " +
                 "assinar novamente a qualquer momento enviando ESTILO para " +
@@ -34,13 +39,13 @@ public class OiGloriaKalilTest extends SmsTest {
     }
 
     @Override
-    protected String getSecondWelcomeMessage() {
+    protected String getWelcomeMessage() {
         return "Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros " +
                 "dias sao GRATIS! Não";
     }
 
     @Override
-    protected String getFirstWelcomeMessage() {
+    protected String getFreePeriodMessage() {
         return "Estilo com Gloria Kalil assinado! (RS3,99 por semana)." +
                 " Voce recebera dicas diarias para voce ficar por dentro da moda. " +
                 "Para cancelar envie SAIR para 66006";

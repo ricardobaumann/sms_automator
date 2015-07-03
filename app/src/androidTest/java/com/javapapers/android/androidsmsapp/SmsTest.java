@@ -4,6 +4,7 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -40,24 +41,37 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
     }
 
     public void optout() {
+
         sendMessageAndDelay(getLA(),getOptoutKeyword());
     }
+
 
     protected abstract String getOptoutKeyword();
 
     public void testOptinOptout() {
+
+        optout();
+
         optin();
 
-        verifyMessage(getFirstWelcomeMessage());
+        if (getFreePeriodMessage()!=null) {
+            verifyMessage(getFreePeriodMessage());
+        }
 
-        if (getSecondWelcomeMessage()!=null) {
-            verifyMessage(getSecondWelcomeMessage());
+
+
+        if (getWelcomeMessage()!=null) {
+            verifyMessage(getWelcomeMessage());
         }
 
         if (getAlreadySignedMessage()!=null) {
             optin();
 
             verifyMessage(getAlreadySignedMessage());
+        }
+
+        if (getFirstContent()!=null) {
+            verifyMessage(getFirstContent());
         }
 
         optout();
@@ -67,21 +81,33 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
 
     }
 
+    protected abstract String getFirstContent();
+
     protected abstract String getSignoutMessage();
 
     protected abstract String getAlreadySignedMessage();
 
-    protected abstract String getSecondWelcomeMessage();
+    protected abstract String getWelcomeMessage();
 
-    protected abstract String getFirstWelcomeMessage();
+    protected abstract String getFreePeriodMessage();
 
     protected abstract String getOptinKeyword();
 
     protected abstract String getLA();
 
     public void sendMessageAndDelay(String msisdn, String message) {
-        onView(withId(R.id.btnCompose)).check(matches(isDisplayed()));
-        onView(withId(R.id.btnCompose)).perform(click());
+
+
+
+        try {
+            onView(withId(R.id.btnCompose)).check(matches(isDisplayed()));
+            onView(withId(R.id.btnCompose)).perform(click());
+        }
+        catch (Exception e) {
+
+        }
+
+        clear();
 
         onView(withId(R.id.editTextPhoneNo)).perform(typeText(msisdn));
         onView(withId(R.id.editTextSMS)).perform(typeText(message));
@@ -91,12 +117,24 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
         delay(getDefaultDelay());
     }
 
+    private void clear() {
+        onView(withId(R.id.editTextPhoneNo)).perform(clearText());
+        onView(withId(R.id.editTextSMS)).perform(clearText());
+    }
+
     public void verifyMessage(String message) {
         onView(withId(R.id.btnInbox)).check(matches(isDisplayed()));
         onView(withId(R.id.btnInbox)).perform(click());
 
-        onData(allOf(is(instanceOf(String.class)), containsString(message)))
-                .perform(click());
+        try {
+            onData(allOf(is(instanceOf(String.class)), containsString(message)))
+                    .perform(click());
+        }
+        catch (RuntimeException re) {
+            if (!re.getMessage().contains("Multiple data")) {
+                throw re;
+            }
+        }
     }
 
     public void delay(long minutes) {

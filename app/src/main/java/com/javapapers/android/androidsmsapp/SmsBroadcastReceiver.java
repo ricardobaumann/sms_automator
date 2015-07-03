@@ -37,7 +37,10 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
 
             //this will update the UI with message
             ReceiveSmsActivity inst = ReceiveSmsActivity.instance();
-            inst.updateList(smsMessageStr);
+            if (inst!=null && smsMessageStr!=null) {
+                inst.updateList(smsMessageStr);
+            }
+
         }
     }
 }
