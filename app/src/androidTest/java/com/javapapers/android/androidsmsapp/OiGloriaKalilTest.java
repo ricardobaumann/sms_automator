@@ -13,33 +13,37 @@ import static org.hamcrest.core.Is.is;
  */
 public class OiGloriaKalilTest extends SmsTest {
 
-    public void testOptinOptout() {
-        optin();
 
-        verifyMessage("Estilo com Gloria Kalil assinado! (RS3,99 por semana)." +
-                " Voce recebera dicas diarias para voce ficar por dentro da moda. " +
-                "Para cancelar envie SAIR para 66006");
-
-        verifyMessage("Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros " +
-                "dias sao GRATIS! Não");
-
-        optin();
-
-        verifyMessage("GLORIA: Voce ja e assinante e recebera diariamente dicas para" +
-                " voce ficar por dentro da moda. Duvidas? Envie AJUDA");
-
-        optout();
-
-        verifyMessage("GLORIA: Seu cancelamento foi efetuado com sucesso. Voce pode " +
-                "assinar novamente a qualquer momento enviando ESTILO para " +
-                "66006");
-
-
-    }
 
     @Override
     protected String getOptoutKeyword() {
         return "SAIR";
+    }
+
+    @Override
+    protected String getSignoutMessage() {
+        return "GLORIA: Seu cancelamento foi efetuado com sucesso. Voce pode " +
+                "assinar novamente a qualquer momento enviando ESTILO para " +
+                "66006";
+    }
+
+    @Override
+    protected String getAlreadySignedMessage() {
+        return "GLORIA: Voce ja e assinante e recebera diariamente dicas para" +
+                " voce ficar por dentro da moda. Duvidas? Envie AJUDA";
+    }
+
+    @Override
+    protected String getSecondWelcomeMessage() {
+        return "Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros " +
+                "dias sao GRATIS! Não";
+    }
+
+    @Override
+    protected String getFirstWelcomeMessage() {
+        return "Estilo com Gloria Kalil assinado! (RS3,99 por semana)." +
+                " Voce recebera dicas diarias para voce ficar por dentro da moda. " +
+                "Para cancelar envie SAIR para 66006";
     }
 
     @Override

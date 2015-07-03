@@ -45,6 +45,36 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
 
     protected abstract String getOptoutKeyword();
 
+    public void testOptinOptout() {
+        optin();
+
+        verifyMessage(getFirstWelcomeMessage());
+
+        if (getSecondWelcomeMessage()!=null) {
+            verifyMessage(getSecondWelcomeMessage());
+        }
+
+        if (getAlreadySignedMessage()!=null) {
+            optin();
+
+            verifyMessage(getAlreadySignedMessage());
+        }
+
+        optout();
+
+        verifyMessage(getSignoutMessage());
+
+
+    }
+
+    protected abstract String getSignoutMessage();
+
+    protected abstract String getAlreadySignedMessage();
+
+    protected abstract String getSecondWelcomeMessage();
+
+    protected abstract String getFirstWelcomeMessage();
+
     protected abstract String getOptinKeyword();
 
     protected abstract String getLA();
