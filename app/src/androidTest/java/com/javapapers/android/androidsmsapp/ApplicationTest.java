@@ -50,9 +50,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.editTextPhoneNo)).perform(typeText("5184117032"));
         onView(withId(R.id.editTextSMS)).perform(typeText("mensagem ui loco"));
 
-        //onView(withId(R.id.btnSendSMS)).perform(click());
+        onView(withId(R.id.btnSendSMS)).perform(click());
 
-        //Thread.sleep(50000);
+        Thread.sleep(50000);
 
         onView(withId(R.id.btnInbox)).check(matches(isDisplayed()));
         onView(withId(R.id.btnInbox)).perform(click());
@@ -60,10 +60,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onData(allOf(is(instanceOf(String.class)), containsString("Dieine")))
                 .perform(click());
 
-        //onData(allOf(is(instanceOf(String.class)), containsString("estegosauro")))
-               // .perform(click());
-
 
     }
+
+
 
 }
