@@ -13,34 +13,42 @@ import static org.hamcrest.core.Is.is;
  */
 public class OiGloriaKalilTest extends SmsTest {
 
-    private static final String LA = "66006";
-
-    private static final String KEYWORD_OPTIN = "ESTILO";
-
-    private static final String KEYWORD_OPTOUT = "SAIR";
-
     public void testOptinOptout() {
-        sendMessageAndDelay(LA, KEYWORD_OPTIN);
+        optin();
 
-        verifyMessage(LA, "Estilo com Gloria Kalil assinado! (RS3,99 por semana)." +
+        verifyMessage("Estilo com Gloria Kalil assinado! (RS3,99 por semana)." +
                 " Voce recebera dicas diarias para voce ficar por dentro da moda. " +
                 "Para cancelar envie SAIR para 66006");
 
-        verifyMessage(LA, "Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros " +
+        verifyMessage("Aproveite! Voce assinou o Estilo com Gloria Kalil e os 7 primeiros " +
                 "dias sao GRATIS! Não");
 
-        sendMessageAndDelay(LA, KEYWORD_OPTIN);
+        optin();
 
-        verifyMessage(LA, "GLORIA: Voce ja e assinante e recebera diariamente dicas para" +
+        verifyMessage("GLORIA: Voce ja e assinante e recebera diariamente dicas para" +
                 " voce ficar por dentro da moda. Duvidas? Envie AJUDA");
 
-        sendMessageAndDelay(LA, KEYWORD_OPTOUT);
+        optout();
 
-        verifyMessage(LA,"GLORIA: Seu cancelamento foi efetuado com sucesso. Voce pode " +
+        verifyMessage("GLORIA: Seu cancelamento foi efetuado com sucesso. Voce pode " +
                 "assinar novamente a qualquer momento enviando ESTILO para " +
                 "66006");
 
 
     }
 
+    @Override
+    protected String getOptoutKeyword() {
+        return "SAIR";
+    }
+
+    @Override
+    protected String getOptinKeyword() {
+        return "ESTILO";
+    }
+
+    @Override
+    protected String getLA() {
+        return "66006";
+    }
 }

@@ -17,7 +17,7 @@ import static org.hamcrest.core.Is.is;
 /**
  * Created by ricardo on 03/07/15.
  */
-public class SmsTest extends ActivityInstrumentationTestCase2<MainActivity>{
+public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActivity>{
 
 
     public SmsTest() {
@@ -35,6 +35,20 @@ public class SmsTest extends ActivityInstrumentationTestCase2<MainActivity>{
         return 1;
     }
 
+    public void optin() {
+        sendMessageAndDelay(getLA(),getOptinKeyword());
+    }
+
+    public void optout() {
+        sendMessageAndDelay(getLA(),getOptoutKeyword());
+    }
+
+    protected abstract String getOptoutKeyword();
+
+    protected abstract String getOptinKeyword();
+
+    protected abstract String getLA();
+
     public void sendMessageAndDelay(String msisdn, String message) {
         onView(withId(R.id.btnCompose)).check(matches(isDisplayed()));
         onView(withId(R.id.btnCompose)).perform(click());
@@ -47,7 +61,7 @@ public class SmsTest extends ActivityInstrumentationTestCase2<MainActivity>{
         delay(getDefaultDelay());
     }
 
-    public void verifyMessage(String from,String message) {
+    public void verifyMessage(String message) {
         onView(withId(R.id.btnInbox)).check(matches(isDisplayed()));
         onView(withId(R.id.btnInbox)).perform(click());
 
