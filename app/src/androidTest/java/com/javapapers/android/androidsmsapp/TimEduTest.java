@@ -16,15 +16,12 @@ public class TimEduTest extends SmsTest {
 
     @Override
     protected String getSignoutMessage() {
-        return "Edu Guedes:Seu cancelamentofoi " +
-                "realizadocomsucesso!Caso queira " +
-                "assinarnovamenteenvieRCT para " +
-                "5052";
+        return "TIM Receitas com Edu Guedes. Seu cancelamento foi realizado";
     }
 
     @Override
     protected String getAlreadySignedMessage() {
-        return "EDU GUEDES. Você ja eh assinante";
+        return "EDU GUEDES: Voce ja eh assinante!";
     }
 
     @Override
