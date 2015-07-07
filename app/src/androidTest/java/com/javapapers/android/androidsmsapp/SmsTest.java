@@ -46,7 +46,9 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
     }
 
 
-    protected abstract String getOptoutKeyword();
+    protected String getOptoutKeyword() {
+        return "SAIR";
+    }
 
     public void testOptinOptout() {
 
@@ -123,8 +125,12 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
     }
 
     public void verifyMessage(String message) {
-        onView(withId(R.id.btnInbox)).check(matches(isDisplayed()));
-        onView(withId(R.id.btnInbox)).perform(click());
+        try {
+            onView(withId(R.id.btnInbox)).check(matches(isDisplayed()));
+            onView(withId(R.id.btnInbox)).perform(click());
+        } catch (Exception e) {
+
+        }
 
         try {
             onData(allOf(is(instanceOf(String.class)), containsString(message)))

@@ -16,7 +16,7 @@ public class TimEduTest extends SmsTest {
 
     @Override
     protected String getSignoutMessage() {
-        return "TIM Receitas com Edu Guedes. Seu cancelamento foi realizado";
+        return "TIM Receitas com Edu Guedes: Seu cancelamento foi realizado!";
     }
 
     @Override
