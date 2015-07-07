@@ -40,6 +40,8 @@ spoon {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.taskadapter:redmine-java-api:2.2.0'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
     // Espresso
     androidTestCompile('com.android.support.test:testing-support-lib:0.1')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.0')

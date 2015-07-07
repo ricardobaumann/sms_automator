@@ -2,6 +2,8 @@ package com.javapapers.android.androidsmsapp;
 
 import android.test.ActivityInstrumentationTestCase2;
 
+import org.apache.http.conn.ssl.SSLSocketFactory;
+
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.clearText;
@@ -29,6 +31,7 @@ public abstract class SmsTest extends ActivityInstrumentationTestCase2<MainActiv
     protected void setUp() throws Exception {
         super.setUp();
         getActivity();
+        RedmineClient.createRedmineIssue();
         //TODO: clean inbox
     }
 
